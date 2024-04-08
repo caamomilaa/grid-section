@@ -1,11 +1,11 @@
-:root{
-  --color-white: #FFFFFF;
-  --color-grey: #48556A;
-  --color-purple: #733FC8;
-  --color-blue: #19202D;
-  --color-lightpurple: #A775F1;
-  --color-lightblue: #ECF2F8;
-  --color-lightgrey: #CFCFCF;
+:root {
+  --color-white: #ffffff;
+  --color-grey: #48556a;
+  --color-purple: #733fc8;
+  --color-blue: #19202d;
+  --color-lightpurple: #a775f1;
+  --color-lightblue: #e5edf5;
+  --color-lightgrey: #cfcfcf;
 }
 * {
   box-sizing: border-box;
@@ -25,54 +25,99 @@ body {
   font-family: 'Barlow Semi Condensed', sans-serif;
   background-color: var(--color-lightblue);
 }
-.review-container{
+.review-container {
   margin: 75px 24px 75px 24px;
 }
-.card{
+@media screen and (width >= 768px) {
+  .review-container {
+    display: grid;
+    grid-template-columns: repeat(4, 255px);
+    grid-template-rows: 282px 266px;
+    gap: 30px;
+  }
+  .card--purple {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    width: 540px;
+    height: 282px;
+  }
+  .card--grey {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    width: 255px;
+    height: 282px;
+  }
+  .card--big {
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+  }
+  .card--blue {
+    grid-column: 2 / 4;
+    grid-row: 2 / 3;
+  }
+}
+.card {
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 22px;
+  isolation: isolate;
 }
-.card--purple{
+.card--purple {
+  position: relative;
   background-color: var(--color-purple);
 }
-.card--grey{
+.card--purple::after {
+  position: absolute;
+  content: '';
+  width: 104px;
+  height: 102px;
+  background-image: url(../assets/images/bg-pattern-quotation.svg);
+  top: 0;
+  right: 24px;
+  z-index: -1;
+}
+.card--grey {
   background-color: var(--color-grey);
 }
-.card--blue{
+.card--blue {
   background-color: var(--color-blue);
 }
-.card__user{
+.card--white {
+  background-color: var(--color-white);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.346);
+}
+.card__user {
   display: flex;
   width: 100%;
   gap: 16px;
-}.card__img{
+}
+.card__img {
   width: 28px;
   height: 28px;
   border-radius: 100%;
-  border: #A775F1 solid 3px;
+  border: #a775f1 solid 3px;
 }
-.card__username{
+.card__username {
   font-size: 13px;
   font-weight: 500;
-  margin:0;
+  margin: 0;
 }
-.card__text--clear{
+.card__text--clear {
   color: var(--color-white);
 }
-.card__text--dark{
+.card__text--dark {
   color: var(--color-grey);
 }
-.card__verified{
+.card__verified {
   font-size: 11px;
   font-weight: 500;
   margin: 0;
 }
-.card__title{
+.card__title {
   font-size: 20px;
   font-weight: 600;
 }
-.card__text{
+.card__text {
   font-size: 13px;
   font-weight: 400;
 }
